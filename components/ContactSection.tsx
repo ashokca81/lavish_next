@@ -125,7 +125,7 @@ const ContactSection = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-brand-blue via-brand-yellow to-brand-purple mx-auto mb-6"></div>
           <p className="max-w-2xl mx-auto text-gray-300 text-lg">
             Have a project in mind or want to learn more about our services?
-            We'd love to hear from you!
+            We&apos;d love to hear from you!
           </p>
         </div>
         

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -98,7 +98,7 @@ const ContactSubmissionsManager: React.FC<ContactSubmissionsManagerProps> = ({ c
     'Urgent - Same day response needed': 'bg-red-100 text-red-800'
   };
 
-  const fetchContactSubmissions = async () => {
+  const fetchContactSubmissions = useCallback(async () => {
     setLoading(true);
     setError('');
     
@@ -140,11 +140,11 @@ const ContactSubmissionsManager: React.FC<ContactSubmissionsManagerProps> = ({ c
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, itemsPerPage, searchTerm, statusFilter, priorityFilter, inquiryTypeFilter, leadScoreFilter]);
 
   useEffect(() => {
     fetchContactSubmissions();
-  }, [currentPage, statusFilter, priorityFilter, inquiryTypeFilter, leadScoreFilter]);
+  }, [fetchContactSubmissions]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -178,11 +178,11 @@ const ContactSubmissionsManager: React.FC<ContactSubmissionsManagerProps> = ({ c
         console.log('✅ Status updated successfully');
         // Update the selected submission if it's the one being updated
         if (selectedSubmission && selectedSubmission._id === submissionId) {
-          setSelectedSubmission({ ...selectedSubmission, status: newStatus });
+          setSelectedSubmission({ ...selectedSubmission, status: newStatus as ContactSubmission['status'] });
         }
         // Refresh the list
         fetchContactSubmissions();
-        setError(null); // Clear any previous errors
+        setError(''); // Clear any previous errors
       } else {
         console.error('❌ Failed to update status:', data);
         setError(data.message || 'Failed to update status. Please try again.');

@@ -268,11 +268,11 @@ const ContactForm: React.FC = () => {
           <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h2>
           <p className="text-gray-600 mb-4">
-            Thank you for contacting us. We'll get back to you within 24 hours based on your urgency level.
+            Thank you for contacting us. We&apos;ll get back to you within 24 hours based on your urgency level.
           </p>
           <div className="space-y-2 text-sm text-gray-500 mb-6">
-            <p>📧 You'll receive a confirmation email shortly</p>
-            <p>📞 If urgent, we'll call you within a few hours</p>
+            <p>📧 You&apos;ll receive a confirmation email shortly</p>
+            <p>📞 If urgent, we&apos;ll call you within a few hours</p>
             <p>💼 For project inquiries, expect a detailed response</p>
           </div>
           <Button onClick={() => setSubmitted(false)}>
@@ -291,7 +291,7 @@ const ContactForm: React.FC = () => {
             Get In Touch
           </CardTitle>
           <p className="text-center text-gray-600 mt-2">
-            We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
           </p>
         </CardHeader>
         

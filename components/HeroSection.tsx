@@ -192,7 +192,7 @@ const HeroSection = () => {
                   <X size={20} />
                 </button>
                 <h2 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 pr-12">Start Your Project</h2>
-                <p className="text-white/90 text-sm sm:text-base">Tell us about your project and we'll get back to you within 24 hours</p>
+                <p className="text-white/90 text-sm sm:text-base">Tell us about your project and we&apos;ll get back to you within 24 hours</p>
               </div>
               
               {/* Form Container with Scroll */}

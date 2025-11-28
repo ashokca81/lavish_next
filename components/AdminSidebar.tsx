@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { 
@@ -20,7 +20,7 @@ const AdminSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   
   // Function to determine which section should be open based on current route
-  const getInitialExpandedSection = () => {
+  const getInitialExpandedSection = useCallback(() => {
     const currentPath = router.pathname;
     
     if (currentPath.includes('/dashboard') || currentPath.includes('/security-dashboard') || currentPath.includes('/minimal-dashboard')) {
@@ -36,7 +36,7 @@ const AdminSidebar = () => {
     }
     
     return 'dashboards'; // default
-  };
+  }, [router.pathname]);
 
   const [expandedSections, setExpandedSections] = useState(() => {
     const activeSection = getInitialExpandedSection();
@@ -59,7 +59,7 @@ const AdminSidebar = () => {
       services: activeSection === 'services',
       communication: activeSection === 'communication'
     });
-  }, [router.pathname]);
+  }, [router.pathname, getInitialExpandedSection]);
 
   const toggleSection = (section: string) => {
     setExpandedSections(prev => {

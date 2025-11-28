@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -115,7 +115,7 @@ const ProjectRequestsManager: React.FC<ProjectRequestsManagerProps> = ({ classNa
     'urgent': 'bg-red-100 text-red-800'
   };
 
-  const fetchProjectRequests = async () => {
+  const fetchProjectRequests = useCallback(async () => {
     setLoading(true);
     setError('');
     
@@ -157,11 +157,11 @@ const ProjectRequestsManager: React.FC<ProjectRequestsManagerProps> = ({ classNa
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage, itemsPerPage, searchTerm, statusFilter, priorityFilter, projectTypeFilter, dateRange]);
 
   useEffect(() => {
     fetchProjectRequests();
-  }, [currentPage, statusFilter, priorityFilter, projectTypeFilter, dateRange]);
+  }, [fetchProjectRequests]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();

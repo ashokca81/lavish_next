@@ -269,7 +269,7 @@ const ProjectRequestForm: React.FC = () => {
             Start Your Project
           </CardTitle>
           <p className="text-center text-gray-600 mt-2">
-            Tell us about your project and let's bring your vision to life
+            Tell us about your project and let&apos;s bring your vision to life
           </p>
         </CardHeader>
         
